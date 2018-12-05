@@ -1,0 +1,17 @@
+[
+    {
+        "name": "pingstatus-tls-v1",
+        "host": "demo33-test.apigee.net",
+        "isEnabled": true,
+        "port": 443,
+        "sSLInfo": {
+            "ciphers": [],
+            "clientAuthEnabled": "true",
+            "enabled": "true",
+            "ignoreValidationErrors": false,
+            "keyAlias": "keystore-outbound-pingstatus-tls-v1-test",
+            "keyStore": "ref://keystore-outbound-pingstatus-tls-v1-test-ref",
+            "protocols": []
+        }
+    }
+]

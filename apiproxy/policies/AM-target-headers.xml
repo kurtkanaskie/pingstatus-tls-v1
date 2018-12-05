@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-target-headers">
+    <DisplayName>AM-target-headers</DisplayName>
+    <Properties/>
+    <Set>
+        <Headers>
+            <Header name="X-Originating-Client-CN">{verifyapikey.VA-header.X-Client-CN}</Header>
+            <Header name="X-Originating-tls.cipher">{tls.cipher}</Header>
+            <Header name="X-Originating-tls.protocol">{tls.protocol}</Header>
+            <Header name="X-Originating-tls.server.name">{tls.server.name}</Header>
+            <Header name="X-Originating-tls.session.id">{tls.session.id}</Header>
+            <Header name="X-Originating-tls.client.s.dn">{tls.client.s.dn}</Header>
+            <Header name="X-Originating-tls.client.i.dn">{tls.client.i.dn}</Header>
+            <Header name="X-Originating-tls.client.raw.cert">{tls.client.raw.cert}</Header>
+            <Header name="X-Originating-tls.cert.fingerprint">{tls.cert.fingerprint}</Header>
+            <Header name="X-Originating-client.cn">{client.cn}</Header>
+            <Header name="X-Originating-client.country">{client.country}</Header>
+            <Header name="X-Originating-client.email.address">{client.email.address}</Header>
+            <Header name="X-Originating-client.locality">{client.locality}</Header>
+            <Header name="X-Originating-client.organization">{client.organization}</Header>
+            <Header name="X-Originating-client.organization.unit">{client.organization.unit}</Header>
+            <Header name="X-Originating-client.ssl.enabled">{client.ssl.enabled}</Header>
+            <Header name="X-Originating-client.state">{client.state}</Header>
+        </Headers>
+    </Set>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="http" type="request"/>
+</AssignMessage>

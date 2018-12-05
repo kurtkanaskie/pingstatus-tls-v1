@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="6" name="pingstatus-tls-v1">
+    <Basepaths>/pingstatus-tls/v1</Basepaths>
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1536700421151</CreatedAt>
+    <CreatedBy>kurtkanaskie@google.com</CreatedBy>
+    <Description>Local change to make status show all tls attributes - @description</Description>
+    <DisplayName>pingstatus-v1</DisplayName>
+    <LastModifiedAt>1542733593339</LastModifiedAt>
+    <LastModifiedBy>kurtkanaskie@google.com</LastModifiedBy>
+    <ManifestVersion>SHA-512:ea5627dc765872ff11dcd017fbbe2dfcac1452c6f5f0ae56438c4f9edf874c71068cbb8ecccdb6674fee0fdc1adeadb919c68ffaa6af7434f67481b1dc6e75f9</ManifestVersion>
+    <Policies>
+        <Policy>AM-create-ping-response</Policy>
+        <Policy>AM-create-status-response</Policy>
+        <Policy>AM-debug</Policy>
+        <Policy>AM-missing-or-invalid-clientId</Policy>
+        <Policy>AM-resource-not-found</Policy>
+        <Policy>AM-set-get-status-pathsuffix</Policy>
+        <Policy>AM-set-proxy-default-error-vars</Policy>
+        <Policy>AM-set-service-unavailable-error-variables</Policy>
+        <Policy>AM-set-standard-error-response</Policy>
+        <Policy>AM-ssl-variables</Policy>
+        <Policy>AM-target-headers</Policy>
+        <Policy>JS-proxy-fault-rules</Policy>
+        <Policy>JS-set-time-data</Policy>
+        <Policy>JS-verify-client-cn</Policy>
+        <Policy>KV-config-values</Policy>
+        <Policy>RF-client-cn-mismatch</Policy>
+        <Policy>RF-invalid-client-cn</Policy>
+        <Policy>RF-path-suffix-not-found</Policy>
+        <Policy>VA-header</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources>
+        <Resource>jsc://JS-proxy-fault-rules.js</Resource>
+        <Resource>jsc://JS-set-time-data.js</Resource>
+        <Resource>jsc://JS-verify-client-cn.js</Resource>
+    </Resources>
+    <Spec></Spec>
+    <TargetServers/>
+    <TargetEndpoints>
+        <TargetEndpoint>default</TargetEndpoint>
+    </TargetEndpoints>
+</APIProxy>

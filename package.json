@@ -1,0 +1,32 @@
+{
+  "name": "pingstatus",
+  "version": "1.0.0",
+  "devDependencies": {
+    "apickli": "latest",
+    "bluebird": "^3.3.5",
+    "chai": "^3",
+    "chai-fuzzy": "^1",
+    "cucumber": "^3",
+    "cucumber-pretty": "0.0.5",
+    "mocha": "^2",
+    "prettyjson": "^1",
+    "sinon": "^1"
+  },
+  "jshintConfig": {
+    "predef": [
+      "console",
+      "context"
+    ],
+    "curly": true,
+    "eqeqeq": true,
+    "forin": true,
+    "undef": true,
+    "latedef": true,
+    "noempty": true,
+    "nonew": true,
+    "unused": true
+  },
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}

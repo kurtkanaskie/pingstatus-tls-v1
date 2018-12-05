@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-create-ping-response">
+    <DisplayName>AM-create-ping-response</DisplayName>
+    <Properties/>
+    <Set>
+        <Payload contentType="application/json">
+{
+    "organization": "{organization.name}",
+    "environment": "{environment.name}",
+    "virtualHost":"{virtualhost.name}",
+    "region":"{system.region.name}",
+    "pod":"{system.pod.name}",
+    "messageProcessor":"{system.uuid}",
+    "application": "{verifyapikey.VA-header.developer.app.name}",
+    "product": "{verifyapikey.VA-header.apiproduct.name}",
+    "apiproxy": "{apiproxy.name}",
+    "basepath": "{proxy.basepath}",
+    "suffix": "{proxy.pathsuffix}",
+    "client": "{client.host}",
+    "time": "{system.time}",
+    "latency": {total_request_time},
+    "message":"PONG",
+    "tls.cipher":"{tls.cipher}",
+    "tls.protocol":"{tls.protocol}",
+    "tls.server.name":"{tls.server.name}",
+    "tls.session.id":"{tls.session.id}",
+    "tls.client.s.dn":"{tls.client.s.dn}",
+    "tls.client.i.dn":"{tls.client.i.dn}",
+    "tls.client.raw.cert":"{tls.client.raw.cert}",
+    "tls.client.cert.serial":"{tls.client.cert.serial}",
+    "tls.client.cert.fingerprint":"{tls.client.cert.fingerprint}",
+    "client.cn":"{client.cn}",
+    "client.country":"{client.country}",
+    "client.email.address":"{client.email.address}",
+    "client.locality":"{client.locality}",
+    "client.organization":"{client.organization}",
+    "client.organization.unit":"{client.organization.unit}",
+    "client.ssl.enabled":"{client.ssl.enabled}",
+    "client.state":"{client.state}"
+}
+</Payload>
+        <StatusCode>200</StatusCode>
+    </Set>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</AssignMessage>

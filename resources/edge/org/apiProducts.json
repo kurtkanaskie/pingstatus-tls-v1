@@ -1,0 +1,32 @@
+[
+    {
+        "name": "pingstatus-tls-v1-product-APIGEE_ENVIRONMENT",
+        "apiResources": [
+            "/",
+            "/**"
+        ],
+        "approvalType": "auto",
+        "attributes": [
+            {
+                "name": "custom.client.cns",
+                "value": "Kurt Developer Kanaskie,Arvind,Client1,Client2,Partner1-Client1,Partner1-Client2,Partner2-Client1,Partner1-Client2"
+            },
+            {
+                "name": "custom.description",
+                "value": "Product to test pingstatus TLS API for APIGEE_ENVIRONMENT env"
+            }
+        ],
+        "description": "Product to test pingstatus-tls-v1 API in APIGEE_ENVIRONMENT env",
+        "displayName": "pingstatus-tls-v1-product-APIGEE_ENVIRONMENT",
+        "environments": [
+            "test"
+        ],
+        "proxies": [
+            "pingstatus-tls-v1"
+        ],
+        "quota": "10000",
+        "quotaInterval": "1",
+        "quotaTimeUnit": "month",
+        "scopes": []
+    }      
+]

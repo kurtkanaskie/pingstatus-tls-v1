@@ -1,0 +1,16 @@
+[
+    {
+        "name": "pingstatus-tls-v1",
+        "encrypted": true,
+        "entry": [
+            {
+                "name": "target.basepath",
+                "value": "pingstatusmock/v1"
+            },
+            {
+                "name": "client.cns",
+                "value": "Kurt Developer Kanaskie,Arvind,Client1,Client2,Partner1-Client1,Partner1-Client2,Partner2-Client1,Partner1-Client2"
+            }
+        ]
+    }
+]

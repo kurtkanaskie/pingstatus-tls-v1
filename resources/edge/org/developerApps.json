@@ -1,0 +1,68 @@
+{
+    "cicd-developer-APIGEE_ENVIRONMENT@google.com": [
+        {
+            "name": "pingstatus-tls-v1-app-APIGEE_ENVIRONMENT-partner1-client1",
+            "apiProducts": [ "pingstatus-tls-v1-product-APIGEE_ENVIRONMENT" ],
+            "callbackUrl": "NA",
+            "scopes": [],
+            "attributes": [
+                {
+                    "name": "custom.privacy",
+                    "value": "confidential"
+                },
+                {
+                    "name": "X-Client-CN",
+                    "value": "Partner1-Client1"
+                }
+            ]
+        },
+        {
+            "name": "pingstatus-tls-v1-app-APIGEE_ENVIRONMENT-partner1-client2",
+            "apiProducts": [ "pingstatus-tls-v1-product-APIGEE_ENVIRONMENT" ],
+            "callbackUrl": "NA",
+            "scopes": [],
+            "attributes": [
+                {
+                    "name": "custom.privacy",
+                    "value": "confidential"
+                },
+                {
+                    "name": "X-Client-CN",
+                    "value": "Partner1-Client2"
+                }
+            ]
+        },
+        {
+            "name": "pingstatus-tls-v1-app-APIGEE_ENVIRONMENT-partner2-client1",
+            "apiProducts": [ "pingstatus-tls-v1-product-APIGEE_ENVIRONMENT" ],
+            "callbackUrl": "NA",
+            "scopes": [],
+            "attributes": [
+                {
+                    "name": "custom.privacy",
+                    "value": "confidential"
+                },
+                {
+                    "name": "X-Client-CN",
+                    "value": "Partner2-Client1"
+                }
+            ]
+        },
+        {
+            "name": "pingstatus-tls-v1-app-APIGEE_ENVIRONMENT-partner2-client2",
+            "apiProducts": [ "pingstatus-tls-v1-product-APIGEE_ENVIRONMENT" ],
+            "callbackUrl": "NA",
+            "scopes": [],
+            "attributes": [
+                {
+                    "name": "custom.privacy",
+                    "value": "confidential"
+                },
+                {
+                    "name": "X-Client-CN",
+                    "value": "Partner2-Client2"
+                }
+            ]
+        }
+    ]
+}

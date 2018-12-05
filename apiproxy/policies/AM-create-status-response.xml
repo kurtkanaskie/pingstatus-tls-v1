@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-create-status-response">
+    <DisplayName>AM-create-status-response</DisplayName>
+    <Properties/>
+    <Set>
+        <Payload contentType="application/json">
+{
+    "environment": "{environment.name}",
+    "apiproxy": "{apiproxy.name}",
+    "basepath": "{proxy.basepath}",
+    "suffix": "{proxy.pathsuffix}",
+    "client": "{client.host}",
+    "time": "{system.time}",
+    "proxyLatency": {total_client_time},
+    "targetLatency": {total_target_time},
+    "latency": {total_request_time},
+    "message":"STATUS",
+    "tls.cipher":"{tls.cipher}",
+    "tls.protocol":"{tls.protocol}",
+    "tls.server.name":"{tls.server.name}",
+    "tls.session.id":"{tls.session.id}",
+    "tls.client.s.dn":"{tls.client.s.dn}",
+    "tls.client.i.dn":"{tls.client.i.dn}",
+    "tls.client.raw.cert":"{tls.client.raw.cert}",
+    "tls.client.cert.serial":"{tls.client.cert.serial}",
+    "tls.client.cert.fingerprint":"{tls.client.cert.fingerprint}",
+    "client.cn":"{client.cn}",
+    "client.country":"{client.country}",
+    "client.email.address":"{client.email.address}",
+    "client.locality":"{client.locality}",
+    "client.organization":"{client.organization}",
+    "client.organization.unit":"{client.organization.unit}",
+    "client.ssl.enabled":"{client.ssl.enabled}",
+    "client.state":"{client.state}",
+    "backendHeaders":{
+        "X-Client-Server-Name":"{response.header.X-Originating-tls.server.name}",
+        "X-Client-Session-ID":"{response.header.X-Originating-tls.session.id}",
+        "X-Client-CN":"{response.header.X-Originating-client.cn}",
+        "X-Client-S-DN":"{response.header.X-Originating-tls.client.s.dn}",
+        "X-Client-I-DN":"{response.header.X-Originating-tls.client.i.dn}"
+    },
+    "backendMessage":{response.content}
+}
+</Payload>
+    </Set>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="http" type="request"/>
+</AssignMessage>
