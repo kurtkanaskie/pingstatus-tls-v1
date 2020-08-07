@@ -1,5 +1,10 @@
 {
   "name": "pingstatus-tls-v1",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com:kurtkanaskie/pingstatus-tls-v1.git"
+  },
+  "license": "SEE LICENSE IN LICENSE",
   "version": "1.0.0",
   "devDependencies": {
     "apickli": "latest",
@@ -8,7 +13,7 @@
     "chai-fuzzy": "^1",
     "cucumber": "^6",
     "cucumber-pretty": "6.0.0",
-    "mocha": "^2",
+    "mocha": "^8.1.1",
     "prettyjson": "^1",
     "sinon": "^1"
   },
