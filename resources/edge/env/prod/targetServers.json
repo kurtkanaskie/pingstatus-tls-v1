@@ -1,17 +1,32 @@
 [
     {
-        "name": "pingstatus-tls-v1",
-        "host": "demo33-prod.apigee.net",
+        "host": "api.kurtkanaskie.net",
         "isEnabled": true,
+        "name": "pingstatus-tls-v1",
+        "port": 443,
+        "sSLInfo": {
+            "ciphers": [],
+            "clientAuthEnabled": "false",
+            "enabled": "true",
+            "ignoreValidationErrors": false,
+            "protocols": [],
+            "trustStore": ""
+        }
+    },
+    {
+        "host": "api2.kurtkanaskie.net",
+        "isEnabled": true,
+        "name": "pingstatus-tls-v1-two-way",
         "port": 443,
         "sSLInfo": {
             "ciphers": [],
             "clientAuthEnabled": "true",
             "enabled": "true",
             "ignoreValidationErrors": false,
-            "keyAlias": "keystore-outbound-pingstatus-tls-v1-prod",
-            "keyStore": "ref://keystore-outbound-pingstatus-tls-v1-prod-ref",
-            "protocols": []
+            "keyAlias": "pingstatus-tls-v1",
+            "keyStore": "ref://pingstatus-tls-v1",
+            "protocols": [],
+            "trustStore": ""
         }
     }
 ]

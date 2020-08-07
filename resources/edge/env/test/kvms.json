@@ -5,11 +5,11 @@
         "entry": [
             {
                 "name": "target.basepath",
-                "value": "pingstatusmock/v1"
+                "value": "pingstatus-tls-mock/v1"
             },
             {
                 "name": "client.cns",
-                "value": "Kurt Developer Kanaskie,Arvind,Client1,Client2,Partner1-Client1,Partner1-Client2,Partner2-Client1,Partner1-Client2"
+                "value": "Partner1-Client1,Partner1-Client2,Partner2-Client1,Partner1-Client2"
             }
         ]
     }

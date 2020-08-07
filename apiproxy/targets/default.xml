@@ -35,7 +35,8 @@
     </Flows>
     <HTTPTargetConnection>
         <LoadBalancer>
-            <Server name="pingstatus-tls-v1"/>
+            <!--<Server name="pingstatus-tls-v1"/>-->
+            <Server name="pingstatus-tls-v1-two-way"/>
         </LoadBalancer>
         <Path>{private.flow.target.basepath}/{flow.target.pathsuffix}</Path>
     </HTTPTargetConnection>

@@ -26,7 +26,7 @@
     "tls.session.id":"{tls.session.id}",
     "tls.client.s.dn":"{tls.client.s.dn}",
     "tls.client.i.dn":"{tls.client.i.dn}",
-    "tls.client.raw.cert":"{tls.client.raw.cert}",
+    "tls.client.raw.cert":"{escapeJSON(tls.client.raw.cert)}",
     "tls.client.cert.serial":"{tls.client.cert.serial}",
     "tls.client.cert.fingerprint":"{tls.client.cert.fingerprint}",
     "client.cn":"{client.cn}",

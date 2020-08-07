@@ -108,12 +108,12 @@ In each source directory there is a `package.json` file that holds the required 
 ## Running Tests Locally
 Often it is necessary to interate over tests for a feature development. Since Apickli/Cucumber tests are mostly text based, its easy to do this locally. 
 Here are the steps:
-1 Install your feature proxy to Apigee if you are creating a new feature, otherwise just get a copy of the exising proxy you are building tests for.
-2 Run Maven to copy resources and "replace" things. 
-    * `mvn -P test clean process-resources`
-3 Run tests by tag or by feature file
-    * cucumberjs target/test/apickli/features --tags @intg
-    * cucumberjs target/test/apickli/features/errorHandling.feature
+1. Install your feature proxy to Apigee if you are creating a new feature, otherwise just get a copy of the exising proxy you are building tests for.
+2. Run Maven to copy resources and "replace" things. 
+    * `mvn -Ptest process-resources apigee-config:exportAppKeys exec:exec@integration -Ddeployment.suffix= -Dskip.clean=true -Dapigee.config.exportDir=target/test/integration`
+3. Run tests by tag or by feature file
+    * `./node_modules/cucumber/bin/cucumber.js target/test/integration/features --format ./node_modules/cucumber-pretty --tags @intg`
+    * `cucumberjs target/test/apickli/features/errorHandling.feature`
 
 Alternatively, you can run the tests via Maven
 * `mvn -P test process-resources exec:exec@integration -api.testtag=@get-ping`
@@ -139,7 +139,7 @@ NOTE: the initial output from cucumber shows the proxy and basepath being used
 ```
 
 #### Tests
-To see what "tags" are in the tests for cucumberjs run `grep @ *.features` or `find . -name *.feature -exec grep @ {} \;`
+To see what "tags" are in the tests for cucumberjs run `find test -name *.feature -exec grep @ {} \;`
 ```
 @intg
     @invalidclientid
@@ -205,33 +205,40 @@ NOTE: For some reason the latest cucumber (2.3.4) doesnt work with apickli-gherk
 ```
 
 ### Frequently used commands
-mvn jshint:lint
-mvn -Pgcp-test exec:exec@unit
-mvn -Pgcp-test install -Ddeployment.suffix=
-mvn -Pgcp-test install -Ddeployment.suffix= -Dapi.testtag=@get-ping -DskipTests=true
-mvn -Pgcp-test process-resources exec:exec@integration -Ddeployment.suffix= -Dapi.testtag=@get-ping
-mvn -Pgcp-test install -Ddeployment.suffix= -Dapigee.config.options=sync -Dapi.testtag=@get-ping
-mvn -Pgcp-test clean process-resources jmeter:jmeter jmeter-analysis:analyze -Ddeployment.suffix=
-mvn -Pgcp-test clean process-resources -Ddeployment.suffix= exec:exec@integration -Dapi.testtag=@get-status
-mvn -Pgcp-test apigee-config:developers apigee-config:apiproducts apigee-config:developerapps -Dapigee.config.options=update
-mvn -Pgcp-test apigee-config:exportAppKeys -Dapigee.config.exportDir=./appkeys
-mvn -Pgcp-test install -Ddeployment.suffix= -Dapi.testtag=@get-ping -DskipTests=true
-mvn -Pgcp-test clean process-resources -Ddeployment.suffix= exec:exec@integration -Dapi.testtag=@get-ping
+* mvn jshint:lint
+* mvn -P test-two-way exec:exec@unit
+* mvn -P test-two-way install -Ddeployment.suffix=
+* mvn -P test-two-way install -Ddeployment.suffix= -Dapi.testtag=@get-ping -DskipTests=true
+* mvn -P test-two-way process-resources exec:exec@integration -Ddeployment.suffix= -Dapi.testtag=@get-ping
+* mvn -P test-two-way install -Ddeployment.suffix= -Dapigee.config.options=sync -Dapi.testtag=@get-ping
+* mvn -P test-two-way clean process-resources jmeter:jmeter jmeter-analysis:analyze -Ddeployment.suffix=
+* mvn -P test-two-way clean process-resources -Ddeployment.suffix= exec:exec@integration -Dapi.testtag=@get-status
+* mvn -P test-two-way apigee-config:developers apigee-config:apiproducts apigee-config:developerapps -Dapigee.config.options=update
+* mvn -P test-two-way apigee-config:exportAppKeys -Dapigee.config.exportDir=./appkeys
+* mvn -P test-two-way install -Ddeployment.suffix= -Dapi.testtag=@get-ping -DskipTests=true
+* mvn -P test-two-way clean process-resources -Ddeployment.suffix= exec:exec@integration -Dapi.testtag=@get-ping
 
-mvn -Pgcp-test apigee-config:targetservers -Dapigee.config.options=update
-mvn -Pgcp-test apigee-config:developerapps -Dapigee.config.options=update
-mvn -Pgcp-test apigee-config:apiproducts -Dapigee.config.options=update
-mvn -Pgcp-test apigee-config:kvms -Dapigee.config.options=update
+* mvn -P test-two-way apigee-config:targetservers -Dapigee.config.options=update
+* mvn -P test-two-way apigee-config:developerapps -Dapigee.config.options=update
+* mvn -P test-two-way apigee-config:apiproducts -Dapigee.config.options=update
+* mvn -P test-two-way apigee-config:kvms -Dapigee.config.options=update
 
 Install proxy no integration or jmeter tests
-mvn -Pgcp-test install -Ddeployment.suffix= -Dapi.testtag=@NONE -DskipTests=true
+* mvn -P test-two-way install -Ddeployment.suffix= -Dapi.testtag=@NONE -DskipTests=true
 
 Install proxy and update all configs, no integration or jmeter tests
-mvn -Pgcp-test install -Ddeployment.suffix= -Dapigee.config.options=update -Dapi.testtag=@NONE -DskipTests=true
+* mvn -P test-two-way install -Ddeployment.suffix= -Dapigee.config.options=update -Dapi.testtag=@NONE -DskipTests=true
 
 Export App keys
-mvn -Pgcp-test apigee-config:exportAppKeys -Dapigee.config.exportDir=./appkeys
+* mvn -P test-two-way apigee-config:exportAppKeys -Dapigee.config.exportDir=./appkeys
 
 ### Most used commands
-mvn -Pgcp-test install -Ddeployment.suffix= -Dapigee.config.options=update -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@health
-mvn -Pgcp-test process-resources apigee-config:exportAppKeys exec:exec@integration -Ddeployment.suffix= -Dskip.clean=true -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@get-ping
+All at once
+* mvn -P test-two-way install -Ddeployment.suffix= -Dapigee.config.options=update -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@health
+
+Process resoureces and run integration tests
+* mvn -P test-two-way process-resources apigee-config:exportAppKeys exec:exec@integration -Ddeployment.suffix= -Dskip.clean=true -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@get-ping
+
+Just run integration tests from target
+* mvn -P test-two-way exec:exec@integration -Dskip.clean=true -Dapigee.config.dir=target/resources/edge 
+* npm run integration

@@ -39,93 +39,33 @@
 	-->
 	<profiles>
 		<profile>
-			<id>training-test</id>
+			<id>test-two-way</id>
+			<!-- amer-demo13 - Uses properties from $HOME/.m2/settings.xml or environment variables via set-edge-env-values used in Jenkins -->
 			<properties>
-				<apigee.profile>training-test</apigee.profile>
-				<apigee.env>test</apigee.env>
+				<apigee.profile>amer-demo13-test</apigee.profile>
+				<apigee.env>${EdgeEnv}</apigee.env>
 				<apigee.hosturl>https://api.enterprise.apigee.com</apigee.hosturl>
 				<apigee.apiversion>v1</apigee.apiversion>
-				<apigee.org>${env.APIGEE_ORG}</apigee.org>
-				<apigee.username>${env.APIGEE_USERNAME}</apigee.username>
-				<apigee.password>${env.APIGEE_PASSWORD}</apigee.password>
-				<api.northbound.domain>${env.APIGEE_NORTHBOUND_DOMAIN}</api.northbound.domain>
-				<api.testtag>~@intg,~@health,~@wip,~@mock</api.testtag>
-				<clientId>N7w0EUQpifRDYCSpWs6tnUt8jYr6JZbl</clientId>
+				<apigee.org>${EdgeOrg}</apigee.org>
+				<apigee.username>${EdgeUsername}</apigee.username>
+				<apigee.password>${EdgePassword}</apigee.password>
+				<api.northbound.domain>${EdgeNorthboundDomain}</api.northbound.domain>
+				<api.testtag>@errorHandling or @health or @wip</api.testtag>
 			</properties>
 		</profile>
 		<profile>
-			<id>training-prod</id>
+			<id>prod-two-way</id>
+			<!-- amer-demo13 - Uses properties from $HOME/.m2/settings.xml or environment variables via set-edge-env-values used in Jenkins -->
 			<properties>
-				<apigee.profile>training-prod</apigee.profile>
-				<apigee.env>prod</apigee.env>
+				<apigee.profile>prod</apigee.profile>
+				<apigee.env>${EdgeEnv}</apigee.env>
 				<apigee.hosturl>https://api.enterprise.apigee.com</apigee.hosturl>
 				<apigee.apiversion>v1</apigee.apiversion>
-				<apigee.org>${env.APIGEE_ORG}</apigee.org>
-				<apigee.username>${env.APIGEE_USERNAME}</apigee.username>
-				<apigee.password>${env.APIGEE_PASSWORD}</apigee.password>
-				<api.northbound.domain>${env.APIGEE_NORTHBOUND_DOMAIN}</api.northbound.domain>
-				<api.testtag>~@intg,~@health,~@wip,~@mock</api.testtag>
-				<clientId>N7w0EUQpifRDYCSpWs6tnUt8jYr6JZbl</clientId>
-			</properties>
-		</profile>
-		<profile>
-			<id>demo33-test</id>
-			<properties>
-				<apigee.profile>demo33-test</apigee.profile>
-				<apigee.env>test</apigee.env>
-				<apigee.hosturl>https://api.enterprise.apigee.com</apigee.hosturl>
-				<apigee.apiversion>v1</apigee.apiversion>
-				<apigee.org>${env.APIGEE_ORG}</apigee.org>
-				<apigee.username>${env.APIGEE_USERNAME}</apigee.username>
-				<apigee.password>${env.APIGEE_PASSWORD}</apigee.password>
-				<api.northbound.domain>${env.APIGEE_NORTHBOUND_DOMAIN}</api.northbound.domain>
-				<api.testtag>~@intg,~@health,~@wip,~@mock</api.testtag>
-				<clientId>N7w0EUQpifRDYCSpWs6tnUt8jYr6JZbl</clientId>
-			</properties>
-		</profile>
-		<profile>
-			<id>demo33-prod</id>
-			<properties>
-				<apigee.profile>demo33-prod</apigee.profile>
-				<apigee.env>prod</apigee.env>
-				<apigee.hosturl>https://api.enterprise.apigee.com</apigee.hosturl>
-				<apigee.apiversion>v1</apigee.apiversion>
-				<apigee.org>${env.APIGEE_ORG}</apigee.org>
-				<apigee.username>${env.APIGEE_USERNAME}</apigee.username>
-				<apigee.password>${env.APIGEE_PASSWORD}</apigee.password>
-				<api.northbound.domain>${env.APIGEE_NORTHBOUND_DOMAIN}</api.northbound.domain>
-				<api.testtag>~@intg,~@health,~@wip,~@mock</api.testtag>
-				<clientId>N7w0EUQpifRDYCSpWs6tnUt8jYr6JZbl</clientId>
-			</properties>
-		</profile>
-		<profile>
-			<id>gcp-test</id>
-			<properties>
-				<apigee.profile>gcp-test</apigee.profile>
-				<apigee.env>test</apigee.env>
-				<apigee.hosturl>http://10.142.0.3:8080</apigee.hosturl>
-				<apigee.apiversion>v1</apigee.apiversion>
-				<apigee.org>${env.APIGEE_ORG}</apigee.org>
-				<apigee.username>${env.APIGEE_USERNAME}</apigee.username>
-				<apigee.password>${env.APIGEE_PASSWORD}</apigee.password>
-				<api.northbound.domain>${env.APIGEE_NORTHBOUND_DOMAIN}</api.northbound.domain>
-				<api.testtag>~@intg,~@health,~@wip,~@mock</api.testtag>
-				<clientId>N7w0EUQpifRDYCSpWs6tnUt8jYr6JZbl</clientId>
-			</properties>
-		</profile>
-		<profile>
-			<id>gcp-prod</id>
-			<properties>
-				<apigee.profile>eval-prod</apigee.profile>
-				<apigee.env>prod</apigee.env>
-				<apigee.hosturl>http://10.142.0.3:8080</apigee.hosturl>
-				<apigee.apiversion>v1</apigee.apiversion>
-				<apigee.org>${env.APIGEE_ORG}</apigee.org>
-				<apigee.username>${env.APIGEE_USERNAME}</apigee.username>
-				<apigee.password>${env.APIGEE_PASSWORD}</apigee.password>
-				<api.northbound.domain>${env.APIGEE_NORTHBOUND_DOMAIN}</api.northbound.domain>
-				<api.testtag>~@intg,~@health,~@wip,~@mock</api.testtag>
-				<clientId>N7w0EUQpifRDYCSpWs6tnUt8jYr6JZbl</clientId>
+				<apigee.org>${EdgeOrg}</apigee.org>
+				<apigee.username>${EdgeUsername}</apigee.username>
+				<apigee.password>${EdgePassword}</apigee.password>
+				<api.northbound.domain>${EdgeNorthboundDomain}</api.northbound.domain>
+				<api.testtag>@health</api.testtag>
 			</properties>
 		</profile>
 	</profiles>
@@ -213,39 +153,6 @@
 						</goals>
 					</execution>
 				</executions>
-				<!--
-				<configuration>
-					<basedir>${target.root.dir}</basedir>
-					<includes>
-						<include>apiproxy/proxies/default.xml</include>
-						<include>test/integration/test-config.json</include>
-						<include>apiproxy/pingstatus-tls-v1.xml</include>
-						<include>test/performance/testdata.csv</include>
-					</includes>
-					<replacements>
-						<replacement>
-							<token>/pingstatus-tls/v1</token>
-							<value>/pingstatus-tls/${deployment.suffix}v1</value>
-						</replacement>
-						<replacement>
-							<token>pingstatus-tls-v1</token>
-							<value>pingstatus-tls-${deployment.suffix}v1</value>
-						</replacement>
-						<replacement>
-							<token>ORG-ENV.apigee.net</token>
-							<value>${api.northbound.domain}</value>
-						</replacement>
-						<replacement>
-							<token>@description</token>
-							<value>commit ${commit} from ${branch} branch by ${user.name}</value>
-						</replacement>
-						<replacement>
-							<token>REPLACE-CLIENTID</token>
-							<value>${clientId}</value>
-						</replacement>
-					</replacements>
-				</configuration>
-				-->
 				<configuration>
 					<basedir>${target.root.dir}</basedir>
 					<includes>
@@ -270,7 +177,7 @@
 							<value>${api.northbound.domain}</value>
 						</replacement>
 						<replacement>
-							<token>@description</token>
+							<token>@DESCRIPTION</token>
 							<value>commit ${commit} from ${branch} branch by ${user.name}</value>
 						</replacement>
 						<replacement>
@@ -409,9 +316,14 @@
 						<configuration>
 							<skipTests>${skip.integrationTests}</skipTests>
 							<executable>node</executable>
-							<commandlineArgs>
-								./node_modules/cucumber/bin/cucumber.js target/test/integration/features --format ./node_modules/cucumber-pretty --tags ${api.testtag}
-							</commandlineArgs>
+							<arguments>
+						        <argument>./node_modules/cucumber/bin/cucumber-js</argument>
+						        <argument>target/test/integration/features</argument>
+						        <argument>--format</argument>
+						        <argument>./node_modules/cucumber-pretty</argument>
+						        <argument>--tags</argument>
+						        <argument>${api.testtag}</argument>
+						    </arguments>
 						</configuration>
 					</execution>
 				</executions>

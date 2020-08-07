@@ -9,7 +9,7 @@
         <Step>
             <Name>AM-set-standard-error-response</Name>
         </Step>
-    <AlwaysEnforce>true</AlwaysEnforce>
+        <AlwaysEnforce>true</AlwaysEnforce>
     </DefaultFaultRule>
     <FaultRules>
         <FaultRule name="ProxyFaultRules">
@@ -82,13 +82,13 @@
                 </Step>
             </Request>
             <Response/>
-            <Condition>(proxy.pathsuffix MatchesPath "/**")</Condition>
+            <Condition>(proxy.pathsuffix MatchesPath "**")</Condition>
         </Flow>
     </Flows>
     <HTTPProxyConnection>
         <BasePath>/pingstatus-tls/v1</BasePath>
         <Properties/>
-        <VirtualHost>secure</VirtualHost>
+        <VirtualHost>secure-two-way</VirtualHost>
     </HTTPProxyConnection>
     <RouteRule name="ping">
         <Condition>(proxy.pathsuffix MatchesPath "/ping")</Condition>

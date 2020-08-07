@@ -19,7 +19,7 @@
         "description": "Product to test pingstatus-tls-v1 API in APIGEE_ENVIRONMENT env",
         "displayName": "pingstatus-tls-v1-product-APIGEE_ENVIRONMENT",
         "environments": [
-            "test"
+            "APIGEE_ENVIRONMENT"
         ],
         "proxies": [
             "pingstatus-tls-v1"

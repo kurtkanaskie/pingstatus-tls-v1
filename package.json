@@ -1,13 +1,13 @@
 {
-  "name": "pingstatus",
+  "name": "pingstatus-tls-v1",
   "version": "1.0.0",
   "devDependencies": {
     "apickli": "latest",
     "bluebird": "^3.3.5",
     "chai": "^3",
     "chai-fuzzy": "^1",
-    "cucumber": "^3",
-    "cucumber-pretty": "0.0.5",
+    "cucumber": "^6",
+    "cucumber-pretty": "6.0.0",
     "mocha": "^2",
     "prettyjson": "^1",
     "sinon": "^1"
@@ -28,5 +28,8 @@
   },
   "dependencies": {
     "express": "^4.16.3"
+  },
+  "scripts": {
+    "integration": "./node_modules/cucumber/bin/cucumber.js target/test/integration/features --format ./node_modules/cucumber-pretty"
   }
 }
