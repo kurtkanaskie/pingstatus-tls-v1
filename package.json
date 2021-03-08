@@ -1,13 +1,14 @@
 {
   "name": "pingstatus-tls-v1",
+  "version": "1.0.0",
   "repository": {
     "type": "git",
     "url": "git://github.com:kurtkanaskie/pingstatus-tls-v1.git"
   },
   "license": "SEE LICENSE IN LICENSE",
-  "version": "1.0.0",
   "devDependencies": {
     "apickli": "latest",
+    "apigeelint": "2.3.0",
     "bluebird": "^3.3.5",
     "chai": "^3",
     "chai-fuzzy": "^1",
@@ -35,6 +36,8 @@
     "express": "^4.16.3"
   },
   "scripts": {
-    "integration": "./node_modules/cucumber/bin/cucumber.js target/test/integration/features --format ./node_modules/cucumber-pretty"
+    "apigeelint": "node ./node_modules/apigeelint/cli.js -s ./apiproxy -f table",
+    "unit": "node ./node_modules/mocha/bin/mocha test/unit",
+    "integration": "node ./node_modules/cucumber/bin/cucumber-js target/test/integration/features -f ./node_modules/cucumber-pretty"
   }
 }
