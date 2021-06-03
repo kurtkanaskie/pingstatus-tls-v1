@@ -4,6 +4,7 @@
         "basepath": "/pingstatus-tls/v1",
         "apiproxy": "pingstatus-tls-v1",
 		"product":"pingstatus-tls-v1-product-APIGEE_ENVIRONMENT",
-        "app":"pingstatus-tls-v1-app-APIGEE_ENVIRONMENT-partner1-client1"
+        "app1":"pingstatus-tls-v1-app-APIGEE_ENVIRONMENT-partner1-client1",
+        "app2":"pingstatus-tls-v1-app-APIGEE_ENVIRONMENT-partner1-client2"
     }
 }

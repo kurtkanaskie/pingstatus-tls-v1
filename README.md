@@ -192,5 +192,5 @@ Process resoureces and run integration tests
 * mvn -P test-two-way process-resources apigee-config:exportAppKeys frontend:npm@integration -Ddeployment.suffix= -Dskip.clean=true -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@health
 
 Just re-run integration tests from target
-* mvn -P test-two-way exec:exec@integration -Dskip.clean=true -Dapigee.config.dir=target/resources/edge 
+* mvn -P test-two-way frontend:npm@integration -Dskip.clean=true -Dapigee.config.dir=target/resources/edge 
 * npm run integration

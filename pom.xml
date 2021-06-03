@@ -50,7 +50,10 @@
 				<apigee.username>${EdgeUsername}</apigee.username>
 				<apigee.password>${EdgePassword}</apigee.password>
 				<api.northbound.domain>${EdgeNorthboundDomain}</api.northbound.domain>
-				<api.testtag>@errorHandling or @health or @wip</api.testtag>
+				<!-- Can't figure out how to pass this as a single argument, mvn and frontend plugin breaks by space, so just use a single tag
+				<api.testtag>@get-ping or @mismtached-cert</api.testtag>
+				-->
+				<api.testtag>@test</api.testtag>
 			</properties>
 		</profile>
 		<profile>
@@ -65,7 +68,7 @@
 				<apigee.username>${EdgeUsername}</apigee.username>
 				<apigee.password>${EdgePassword}</apigee.password>
 				<api.northbound.domain>${EdgeNorthboundDomain}</api.northbound.domain>
-				<api.testtag>@health</api.testtag>
+				<api.testtag>@prod</api.testtag>
 			</properties>
 		</profile>
 	</profiles>
