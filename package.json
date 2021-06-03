@@ -8,7 +8,7 @@
   "license": "SEE LICENSE IN LICENSE",
   "devDependencies": {
     "apickli": "latest",
-    "apigeelint": "2.3.0",
+    "apigeelint": "2.6.0",
     "bluebird": "^3.3.5",
     "chai": "^3",
     "chai-fuzzy": "^1",
