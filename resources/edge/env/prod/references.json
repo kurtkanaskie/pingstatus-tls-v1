@@ -1,0 +1,12 @@
+[
+	{
+	  "name": "pingstatus-tls-v1",
+	  "resourceType": "KeyStore",
+	  "refers": "pingstatus-tls-v1-CERT_SUFFIX"
+	},
+	{
+	  "name": "truststore-inbound-APIGEE_ENVIRONMENT",
+	  "resourceType": "KeyStore",
+	  "refers": "truststore-inbound-APIGEE_ENVIRONMENT-CERT_SUFFIX"
+	}
+]

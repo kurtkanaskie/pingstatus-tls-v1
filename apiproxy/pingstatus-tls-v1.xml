@@ -4,7 +4,7 @@
     <ConfigurationVersion majorVersion="4" minorVersion="0"/>
     <CreatedAt>1584372519472</CreatedAt>
     <CreatedBy>defaultUser</CreatedBy>
-    <Description>@DESCRIPTION</Description>
+    <Description>REPLACE_DESCRIPTION</Description>
     <DisplayName>pingstatus-tls-v1</DisplayName>
     <LastModifiedAt>1584372519472</LastModifiedAt>
     <LastModifiedBy>defaultUser</LastModifiedBy>

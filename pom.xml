@@ -5,14 +5,14 @@
 	<groupId>apigee</groupId>
 	<artifactId>pingstatus-tls-v1</artifactId>
 	<version>-</version>
-	<name>pingstatus-tls-${deployment.suffix}v1</name>
+	<name>pingstatus-tls-v1</name>
 	<packaging>pom</packaging>
 
 	<pluginRepositories>
 		<pluginRepository>
 			<id>central</id>
 			<name>Maven Plugin Repository</name>
-			<url>http://repo1.maven.org/maven2</url>
+			<url>https://repo1.maven.org/maven2</url>
 			<layout>default</layout>
 			<snapshots>
 				<enabled>false</enabled>
@@ -29,7 +29,6 @@
 		<org.slf4j.simpleLogger.defaultLogLevel>info</org.slf4j.simpleLogger.defaultLogLevel>
 		<project.root.dir>${basedir}</project.root.dir>
 		<target.root.dir>${basedir}/target</target.root.dir>
-		<deployment.suffix>${user.name}</deployment.suffix>
 		<commit></commit>
 		<branch>a local</branch>
 	</properties>
@@ -50,6 +49,11 @@
 				<apigee.username>${EdgeUsername}</apigee.username>
 				<apigee.password>${EdgePassword}</apigee.password>
 				<api.northbound.domain>${EdgeNorthboundDomain}</api.northbound.domain>
+				<apigee.config.dir>target/resources/edge</apigee.config.dir>
+				<apigee.config.exportDir>target/test/integration</apigee.config.exportDir>
+				<apigee.config.options>update</apigee.config.options>
+				<apigee.app.ignoreAPIProducts>true</apigee.app.ignoreAPIProducts>
+				<config.cert.suffix>${ConfigCertSuffix}</config.cert.suffix>
 				<!-- Can't figure out how to pass this as a single argument, mvn and frontend plugin breaks by space, so just use a single tag
 				<api.testtag>@get-ping or @mismtached-cert</api.testtag>
 				-->
@@ -68,6 +72,11 @@
 				<apigee.username>${EdgeUsername}</apigee.username>
 				<apigee.password>${EdgePassword}</apigee.password>
 				<api.northbound.domain>${EdgeNorthboundDomain}</api.northbound.domain>
+				<apigee.config.dir>target/resources/edge</apigee.config.dir>
+				<apigee.config.exportDir>target/test/integration</apigee.config.exportDir>
+				<apigee.config.options>update</apigee.config.options>
+				<apigee.app.ignoreAPIProducts>true</apigee.app.ignoreAPIProducts>
+				<config.cert.suffix>${ConfigCertSuffix}</config.cert.suffix>
 				<api.testtag>@prod</api.testtag>
 			</properties>
 		</profile>
@@ -165,27 +174,26 @@
 						<include>resources/edge/org/apiProducts.json</include>
 						<include>resources/edge/org/developerApps.json</include>
 						<include>resources/edge/org/developers.json</include>
+						<include>resources/edge/env/*/keystores.json</include>
+						<include>resources/edge/env/*/aliases.json</include>
+						<include>resources/edge/env/*/references.json</include>
 					</includes>
 					<replacements>
-						<replacement>
-							<token>/pingstatus-tls/v1</token>
-							<value>/pingstatus-tls/${deployment.suffix}v1</value>
-						</replacement>
-						<replacement>
-							<token>pingstatus-tls-v1</token>
-							<value>pingstatus-tls-${deployment.suffix}v1</value>
-						</replacement>
 						<replacement>
 							<token>API_NORTHBOUND_DOMAIN</token>
 							<value>${api.northbound.domain}</value>
 						</replacement>
 						<replacement>
-							<token>@DESCRIPTION</token>
+							<token>REPLACE_DESCRIPTION</token>
 							<value>commit ${commit} from ${branch} branch by ${user.name}</value>
 						</replacement>
 						<replacement>
 							<token>APIGEE_ENVIRONMENT</token>
 							<value>${apigee.env}</value>
+						</replacement>
+						<replacement>
+							<token>CERT_SUFFIX</token>
+							<value>${config.cert.suffix}</value>
 						</replacement>
 					</replacements>
 				</configuration>
@@ -214,12 +222,33 @@
 				</executions>
 			</plugin>
 
-			<!-- Configuration -->
+			<!-- apigee Configuration prefix: apigee-config then goal (e.g. apigee-config:apiproducts) -->
             <plugin>
                 <groupId>com.apigee.edge.config</groupId>
                 <artifactId>apigee-config-maven-plugin</artifactId>
-                <version>1.2.1</version>
+                <version>1.5.1</version>
                 <executions>
+                    <execution>
+                        <id>create-config-keystores</id>
+                        <phase>package</phase>                        
+                        <goals>
+                            <goal>keystores</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>create-config-aliases</id>
+                        <phase>package</phase>                        
+                        <goals>
+                            <goal>aliases</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>create-config-references</id>
+                        <phase>package</phase>                        
+                        <goals>
+                            <goal>references</goal>
+                        </goals>
+                    </execution>
                     <execution>
                         <id>create-config-cache</id>
                         <phase>verify</phase>                        

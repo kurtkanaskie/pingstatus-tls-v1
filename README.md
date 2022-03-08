@@ -188,7 +188,15 @@ This CI/CD solution is based off the pingstatus-v1 example, please see details [
 All at once
 * mvn -P test-two-way install -Ddeployment.suffix= -Dapigee.config.options=update -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@health
 
-Process resoureces and run integration tests
+export PROFILE=test-two-way
+export PROFILE=prod-two-way
+Process resources and for certificate update
+mvn -P "$PROFILE" resources:copy-resources@copy-resources replacer:replace@replace -DConfigCertSuffix=2022-03-08
+mvn -P "$PROFILE" apigee-config:keystores
+mvn -P "$PROFILE" apigee-config:aliases
+mvn -P "$PROFILE" apigee-config:references  
+
+Process resources and run integration tests
 * mvn -P test-two-way process-resources apigee-config:exportAppKeys frontend:npm@integration -Ddeployment.suffix= -Dskip.clean=true -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@health
 
 Just re-run integration tests from target
