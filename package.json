@@ -33,7 +33,7 @@
     "unused": true
   },
   "dependencies": {
-    "express": "^4.16.3"
+    "express": "^4.18.2"
   },
   "scripts": {
     "apigeelint": "node ./node_modules/apigeelint/cli.js -s ./apiproxy -f table",
