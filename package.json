@@ -14,7 +14,7 @@
     "chai-fuzzy": "^1",
     "cucumber": "^6",
     "cucumber-pretty": "6.0.0",
-    "mocha": "^8.1.1",
+    "mocha": "^8.4.0",
     "prettyjson": "^1",
     "sinon": "^1"
   },
