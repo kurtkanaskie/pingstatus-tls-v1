@@ -1,5 +1,5 @@
 [
-	{
+     {
          "alias":"pingstatus-tls-v1",
          "keystorename": "pingstatus-tls-v1-CERT_SUFFIX",
          "format": "keycertfile",
@@ -11,11 +11,26 @@
          "keystorename": "truststore-inbound-APIGEE_ENVIRONMENT-CERT_SUFFIX",
          "format": "selfsignedcert",
          "certFilePath":"certs/CERT_SUFFIX/partner1-CA.pem",
+         "subject":{
+            "commonName":"Partner1-CA"
+         }
+    },
+    {
+         "alias":"Partner2-CA",
+         "keystorename": "truststore-inbound-APIGEE_ENVIRONMENT-CERT_SUFFIX",
+         "format": "selfsignedcert",
+         "certFilePath":"certs/CERT_SUFFIX/partner2-CA.pem",
+         "subject":{
+            "commonName":"Partner2-CA"
+         }
     },
     {
          "alias":"pingstatus-tls-v1-CA",
          "keystorename": "truststore-inbound-APIGEE_ENVIRONMENT-CERT_SUFFIX",
          "format": "selfsignedcert",
          "certFilePath":"certs/CERT_SUFFIX/target-pingstatus-tls-v1-CA.pem",
+         "subject":{
+            "commonName":"target-pingstatus-tls-v1"
+         }
     }
 ]
