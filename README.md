@@ -23,7 +23,7 @@ Install the mock API proxy, it can be imported from [pingstatus-tls-v1-mock.zip]
 
 Obtain certificates for your Virtual Host and create certificates for self-signed certificate authority (CA).
 
-Configure the virtual host, keystores, trustore and associated references.
+Configure the virtual host, keystores, truststore and associated references.
 * Virtual host configured with mTLS (e.g. secure-two-way)
   * Keystore (cert chain, key) for virtual host (e.g. secure-two-way-YYYY-MM-DD with secure-two-way alias)
   ![virtual-host-keystore](virtual-host-secure-two-way-keystore.png)
@@ -216,26 +216,102 @@ curl -s https://api2-test.kurtkanaskie.net/pingstatus-tls-mock/v1/status --cert 
 ## Installation
 This CI/CD solution is based off the pingstatus-v1 example, please see details [here](https://github.com/kurtkanaskie/pingstatus-v1).
 
-### Install and test
-All at once
-* mvn -P test-two-way install -Ddeployment.suffix= -Dapigee.config.options=update -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@health
+### Relationships
+First: cd ../virtualhosts-keystore-cicd/keystore-cicd to update the virtual host certificates
 
-export PROFILE=test-two-way
+This updates:
+  * truststore-inbound-APIGEE_ENVIRONMENT-CERT_SUFFIX
+  * pingstatus-tls-v1-CERT_SUFFIX
+
+```
+export CDIR=2024-03-11
 export PROFILE=prod-two-way
-#### Process resources and for certificate update
-mvn -P "$PROFILE" resources:copy-resources@copy-resources replacer:replace@replace -DConfigCertSuffix=2023-03-15
-mvn -P "$PROFILE" apigee-config:keystores
-mvn -P "$PROFILE" apigee-config:aliases (manually for some strange reason)
-mvn -P "$PROFILE" apigee-config:references  
+export PROFILE=test-two-way
+```
 
 #### Process resources and run integration tests
-cp certs/2023-03-15/partner1-client1.crt test/integration/certs
-cp certs/2023-03-15/partner1-client1.key test/integration/certs
-cp certs/2023-03-15/partner1-client2.crt test/integration/certs
-cp certs/2023-03-15/partner1-client2.key test/integration/certs
+```
+cd certs
+gen_client_certs.sh
+gen_target_certs.sh
+cd ..
+cp certs/$CDIR/partner1-client1.crt test/integration/certs
+cp certs/$CDIR/partner1-client1.key test/integration/certs
+cp certs/$CDIR/partner1-client2.crt test/integration/certs
+cp certs/$CDIR/partner1-client2.key test/integration/certs
 
-* mvn -P test-two-way process-resources apigee-config:exportAppKeys frontend:npm@integration -Ddeployment.suffix= -Dskip.clean=true -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@health
+cp certs/$CDIR/partner2-client1.crt test/integration/certs
+cp certs/$CDIR/partner2-client1.key test/integration/certs
+cp certs/$CDIR/partner2-client2.crt test/integration/certs
+cp certs/$CDIR/partner2-client2.key test/integration/certs
+```
+
+### Install and test
+All at once
+```
+mvn -P $PROFILE install -Ddeployment.suffix= -Dapigee.config.options=update \
+  -Dapigee.config.dir=target/resources/edge \
+  -Dapigee.config.exportDir=target/test/integration \
+  -DConfigCertSuffix=$CDIR \
+  -Dapi.testtag=@health
+```
+
+#### Process resources and for certificate update
+```
+mvn -P "$PROFILE" resources:copy-resources@copy-resources replacer:replace@replace -DConfigCertSuffix=$CDIR
+mvn -P "$PROFILE" apigee-config:keystores 
+# mvn -P "$PROFILE" apigee-config:aliases # this doesn't work via maven, have to use the UI
+mvn -P "$PROFILE" apigee-config:references
+mvn -P "$PROFILE" apigee-config:targetservers
+```
+
+#### Process resources and run tests
+```
+mvn -P "$PROFILE" process-resources apigee-config:exportAppKeys frontend:npm@integration \
+  -Ddeployment.suffix= -Dskip.clean=true \
+  -Dapigee.config.dir=target/resources/edge \
+  -Dapigee.config.exportDir=target/test/integration \
+  -Dapi.testtag=@health
+```
 
 Just re-run integration tests from target
-* mvn -P test-two-way frontend:npm@integration -Dskip.clean=true -Dapigee.config.dir=target/resources/edge 
-* npm run integration
+```
+mvn -P "$PROFILE" frontend:npm@integration -Dskip.clean=true -Dapigee.config.dir=target/resources/edge 
+npm run integration
+```
+
+TDIR=./test/integration/certs
+
+# TEST
+```
+export HOST=api2-test.kurtkanaskie.net
+export P1C1KEY=DfilsQtS1yHTbSTTGWTywbnUVktxWXUn
+export P1C2KEY=JWYoYAYoZxsjFvTvFG868cvRAqCS46cC
+export P2C1KEY=CLHWjqHWAzMSeLcpENjlj8nGkOiDHtrH
+export P2C2KEY=2N2P1vrHtDlZB3Ay8U3ToqdXPzjdAbIu
+```
+
+# PROD
+```
+export HOST=api2.kurtkanaskie.net
+export P1C1KEY=2Ax8uFRm2AiZ220q6L7pbirrZpPuFE2F
+export P1C2KEY=7RotkvjbqaGJf7uaU16GJ1V5LvhfDlxi
+export P2C1KEY=8zoGyW0eySXcCrCkurGNpshKUfDUkG4G
+export P2C2KEY=GGoP5gl7fZfC5bMMvbETutuKWBVI7AF1
+```
+
+```
+curl -i https://$HOST/notarget --cert $TDIR/partner1-client1.crt --key $TDIR/partner1-client1.key
+curl -i https://$HOST/notarget --cert $TDIR/partner2-client1.crt --key $TDIR/partner1-client1.key
+
+curl -s https://$HOST/pingstatus-tls-mock/v1/status --cert certs/$CDIR/target-pingstatus-tls-v1-test.crt --key certs/$CDIR/target-pingstatus-tls-v1-test.key | jq
+curl -s https://$HOST/pingstatus-tls-mock/v1/status --cert certs/$CDIR/target-pingstatus-tls-v1-prod.crt --key certs/$CDIR/target-pingstatus-tls-v1-prod.key | jq
+
+curl -s https://$HOST/pingstatus-tls/v1/ping -H "X-APIKey:$P1C1KEY" --cert $TDIR/partner1-client1.crt --key $TDIR/partner1-client1.key | jq
+curl -s https://$HOST/pingstatus-tls/v1/status -H "X-APIKey:$P1C1KEY" --cert $TDIR/partner1-client1.crt --key $TDIR/partner1-client1.key | jq
+
+curl -s https://$HOST/pingstatus-tls/v1/status -H "X-APIKey:$P1C2KEY" --cert $TDIR/partner1-client2.crt --key $TDIR/partner1-client2.key | jq
+curl -s https://$HOST/pingstatus-tls/v1/status -H "X-APIKey:$P2C1KEY" --cert $TDIR/partner2-client1.crt --key $TDIR/partner2-client1.key | jq
+curl -s https://$HOST/pingstatus-tls/v1/status -H "X-APIKey:$P2C2KEY" --cert $TDIR/partner2-client2.crt --key $TDIR/partner2-client2.key | jq
+```
+Last one fails because KVM doesn't have Partner2-Client2 whitelisted.
