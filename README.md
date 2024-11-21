@@ -302,7 +302,7 @@ export P2C2KEY=GGoP5gl7fZfC5bMMvbETutuKWBVI7AF1
 
 ```
 curl -i https://$HOST/notarget --cert $TDIR/partner1-client1.crt --key $TDIR/partner1-client1.key
-curl -i https://$HOST/notarget --cert $TDIR/partner2-client1.crt --key $TDIR/partner1-client1.key
+curl -i https://$HOST/notarget --cert $TDIR/partner2-client1.crt --key $TDIR/partner2-client1.key
 
 curl -s https://$HOST/pingstatus-tls-mock/v1/status --cert certs/$CDIR/target-pingstatus-tls-v1-test.crt --key certs/$CDIR/target-pingstatus-tls-v1-test.key | jq
 curl -s https://$HOST/pingstatus-tls-mock/v1/status --cert certs/$CDIR/target-pingstatus-tls-v1-prod.crt --key certs/$CDIR/target-pingstatus-tls-v1-prod.key | jq
